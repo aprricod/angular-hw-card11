@@ -1,1 +1,29 @@
-<p>mod1 works!</p>
+<!-- <ul>
+  <li *ngFor="let user of mod1.users | async">
+    {{ user.name }}. {{ user.email }}. {{ user.address | json }}
+  </li>
+</ul> -->
+
+<div>
+  <input type="text" [(ngModel)]="searchStr" />
+  <br />
+  <label class="active" for="first_name2">Поиск по таблице</label>
+</div>
+<br />
+<table style="width: auto">
+  <thead>
+    Список пользователей
+  </thead>
+  <tr>
+    <th>Имя</th>
+    <th>Почта</th>
+    <th>Адрес</th>
+  </tr>
+  <tr *ngFor="let user of mod1.users | async">
+    <td>{{ user.name }} ({{ user.username }})</td>
+    <td>{{ user.email }}</td>
+    <td>
+      <pre>{{ user.address | json }}</pre>
+    </td>
+  </tr>
+</table>
