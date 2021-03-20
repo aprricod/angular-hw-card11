@@ -4,7 +4,13 @@
   </li>
 </ul> -->
 
+<button (click)="createUser()">Добавить</button>
+<button (click)="changeUser()">Изменить</button>
+<button (click)="removeUser()">Удалить</button>
+<button (click)="initUsers()">Обновить список</button>
+
 <div>
+  <hr />
   <input type="text" [(ngModel)]="searchStr" name="search" />
   <br />
   <label for="search">Поиск по таблице</label>
@@ -19,7 +25,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let user of mod1.users | async | search: searchStr">
+    <tr *ngFor="let user of users | async | search: searchStr">
       <td>{{ user.name }} ({{ user.username }})</td>
       <td>{{ user.email }}</td>
       <td>
@@ -28,3 +34,37 @@
     </tr>
   </tbody>
 </table>
+
+<!-- <form [formGroup]="form">
+  <ng-container formArrayName="userData">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element" formGroup="element">
+          <mat-form-field style="width: 300px" appearance="outline">
+            <input matInput type="text" formControlName="name"
+          /></mat-form-field>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element" formGroup="element">
+          <mat-form-field style="width: 300px" appearance="outline">
+            <input matInput type="text" formControlName="username"
+          /></mat-form-field>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element" formGroup="element">
+          <mat-form-field style="width: 300px" appearance="outline">
+            <input matInput type="text" formControlName="email"
+          /></mat-form-field>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </ng-container>
+</form> -->

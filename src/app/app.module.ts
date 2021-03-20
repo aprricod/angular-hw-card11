@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Mod1Module } from './mod1/mod1.module';
 import { Mod2Module } from './mod2/mod2.module';
+import { Mod3Module } from './mod3/mod3.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,6 +15,7 @@ import { Mod2Module } from './mod2/mod2.module';
     Mod1Module,
     Mod2Module,
     BrowserAnimationsModule,
+    Mod3Module,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -6,6 +6,9 @@ import { User } from './user.interface';
 })
 export class SearchPipe implements PipeTransform {
   transform(users: User[], value: string) {
+    if (!users) {
+      return false;
+    }
     return users.filter((user: User) => {
       return (
         user.name.toLowerCase().includes(value.toLowerCase()) ||

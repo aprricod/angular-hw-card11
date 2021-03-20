@@ -21,3 +21,5 @@ export interface User {
     bs: string;
   };
 }
+
+export type Users = User[];
