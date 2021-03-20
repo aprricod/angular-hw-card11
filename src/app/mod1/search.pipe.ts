@@ -8,15 +8,15 @@ export class SearchPipe implements PipeTransform {
   transform(users: User[], value: string) {
     return users.filter((user: User) => {
       return (
-        user.name.includes(value) ||
-        user.username.includes(value) ||
-        user.email.includes(value) ||
-        user.address.street.includes(value) ||
-        user.address.suite.includes(value) ||
-        user.address.city.includes(value) ||
-        user.address.zipcode.includes(value) ||
-        user.address.geo.lat.includes(value) ||
-        user.address.geo.lng.includes(value)
+        user.name.toLowerCase().includes(value.toLowerCase()) ||
+        user.username.toLowerCase().includes(value.toLowerCase()) ||
+        user.email.toLowerCase().includes(value.toLowerCase()) ||
+        user.address.street.toLowerCase().includes(value.toLowerCase()) ||
+        user.address.suite.toLowerCase().includes(value.toLowerCase()) ||
+        user.address.city.toLowerCase().includes(value.toLowerCase()) ||
+        user.address.zipcode.toLowerCase().includes(value.toLowerCase()) ||
+        user.address.geo.lat.toLowerCase().includes(value.toLowerCase()) ||
+        user.address.geo.lng.toLowerCase().includes(value.toLowerCase())
         // данные, перечисленные ниже, не выводим в таблицу
         // user.phone.includes(value) ||
         // user.website.includes(value) ||
