@@ -3,6 +3,7 @@ import { User } from './user.interface';
 
 @Pipe({
   name: 'search',
+  pure: false,
 })
 export class SearchPipe implements PipeTransform {
   transform(users: User[], value: string) {

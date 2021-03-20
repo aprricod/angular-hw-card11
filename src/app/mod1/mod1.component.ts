@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { Mod1Service } from './mod1.service';
-import { User } from './user.interface';
 
 @Component({
   selector: 'app-mod1',
@@ -11,34 +10,36 @@ import { User } from './user.interface';
 export class Mod1Component implements OnInit {
   searchStr = '';
   users;
-  displayedColumns: string[] = ['name', 'username', 'email'];
-  dataSource;
-  form: FormGroup;
+  // displayedColumns: string[] = ['name', 'username', 'email'];
+  // dataSource;
+  // form: FormGroup;
   constructor(public mod1: Mod1Service, private fb: FormBuilder) {
-    this.form = fb.group({
-      userData: fb.array([
-        fb.group({
-          name: fb.control(''),
-          username: fb.control(''),
-          email: fb.control(''),
-        }),
-      ]),
-    });
-
-    this.mod1.getUsers().subscribe((usersData: User[]) => {
-      this.dataSource = usersData;
-    });
+    // this.form = fb.group({
+    //   userData: fb.array([
+    //     fb.group({
+    //       name: fb.control(''),
+    //       username: fb.control(''),
+    //       email: fb.control(''),
+    //     }),
+    //   ]),
+    // });
+    // this.mod1.getUsers().subscribe((usersData: User[]) => {
+    //   this.dataSource = usersData;
+    // });
   }
 
-  getUserData() {
-    return this.form.get('userData') as FormArray;
-  }
+  // getUserData() {
+  //   return this.form.get('userData') as FormArray;
+  // }
 
   initUsers() {
-    this.users = this.mod1.getUsers();
+    this.mod1.getUsers().subscribe((data) => {
+      this.users = data;
+    });
   }
 
   removeUser() {
+    console.log(this.users);
     let userCount = this.users.length;
     this.mod1.deleteUser(userCount);
     this.users.pop(userCount);

@@ -7,7 +7,7 @@
 <button (click)="createUser()">Добавить</button>
 <button (click)="changeUser()">Изменить</button>
 <button (click)="removeUser()">Удалить</button>
-<button (click)="initUsers()">Обновить список</button>
+<!-- <button (click)="initUsers()">Обновить список</button> -->
 
 <div>
   <hr />
@@ -25,7 +25,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let user of users | async | search: searchStr">
+    <tr *ngFor="let user of users | search: searchStr">
       <td>{{ user.name }} ({{ user.username }})</td>
       <td>{{ user.email }}</td>
       <td>
