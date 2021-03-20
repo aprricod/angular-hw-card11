@@ -5,25 +5,26 @@
 </ul> -->
 
 <div>
-  <input type="text" [(ngModel)]="searchStr" />
+  <input type="text" [(ngModel)]="searchStr" name="search" />
   <br />
-  <label class="active" for="first_name2">Поиск по таблице</label>
+  <label for="search">Поиск по таблице</label>
 </div>
 <br />
 <table style="width: auto">
   <thead>
-    Список пользователей
+    <tr>
+      <th>Имя</th>
+      <th>Почта</th>
+      <th>Адрес</th>
+    </tr>
   </thead>
-  <tr>
-    <th>Имя</th>
-    <th>Почта</th>
-    <th>Адрес</th>
-  </tr>
-  <tr *ngFor="let user of mod1.users | async">
-    <td>{{ user.name }} ({{ user.username }})</td>
-    <td>{{ user.email }}</td>
-    <td>
-      <pre>{{ user.address | json }}</pre>
-    </td>
-  </tr>
+  <tbody>
+    <tr *ngFor="let user of mod1.users | async | search: searchStr">
+      <td>{{ user.name }} ({{ user.username }})</td>
+      <td>{{ user.email }}</td>
+      <td>
+        <pre>{{ user.address | json }}</pre>
+      </td>
+    </tr>
+  </tbody>
 </table>
